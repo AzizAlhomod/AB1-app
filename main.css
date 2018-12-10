@@ -1,0 +1,54 @@
+table#t01 tr:nth-child(even) {
+    background-color: darkgray;
+}
+table#t01 tr:nth-child(odd) {
+    background-color: lightgray;
+}
+table#t01 th {
+    background-color: black;
+    color: white;
+}
+
+.divShowAfterSubmit{
+    z-index: 100;
+    display: none;
+}
+
+.initialHide{
+    display: none;
+}
+
+.clickToShowo{
+    display: block;
+}
+
+.container{
+    font-family: sans-serif;
+    color:black;
+    font-weight: normal;
+    background-color: color(slategray)}
+div.container{
+    width: 50%;
+    height: 50%;
+    margin:35px auto;
+    font-family: 'Raleway', sans-serif;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+
+h2{
+    background-color: darkslategray;
+    padding: 30px 35px;
+    margin: -10px -50px;
+    text-align:center;
+    border-radius: 10px 10px 0 0;
+}
+
+hr{
+    margin: 10px -50px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-bottom: 40px;
+}
+
+

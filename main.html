@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>welcome to the hepranizerxxx </title>
+    <link rel="stylesheet" href="main.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+                .column {
+            float: left;
+            width: 100%;
+            padding: 10px;
+            height: 50%;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            background-color: #2196F3;
+            padding: 10px;
+            width: 100%;
+            height: 50%;
+        }
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+<div class = grid-container>
+
+    <div class="grid-item" onclick="openTab('b1');" style="background:grey;">
+        <h5>
+        <select
+                id="indication2box"
+                name="indication2"
+               onchange="toggleShowHid(this.value())">
+            <option value="0" disabled selected>Select the indication for heparin </option>
+            <option value="Cardiac">cardiac</option>
+            <option value="DVT/PE">DVT/PT</option>
+            <option value="Stroke/TIA/Surgery">Stroke/TIA</option>
+            <option value="Transplant/Vascular">Transplant/Vascular</option>
+        </select>
+        <br>
+        <select id="gender2box" name="gender2">
+            <option hidden>Sex</option>
+            <option value="male">male</option>
+            <option value="female">female</option>
+            <br>
+
+        </select>
+        <br>
+        <input id="actualweightlbbox" name="actualweightlb" type="number" placeholder="Weight in pounds"> <br>
+
+        <input id="actualheight2box" name="actualheight2" type="number" placeholder="Height in inches">
+        <br>
+            </h5>
+        <button   onclick=" GetDose()">Submit</button>
+
+        <br>
+
+    </div>
+    <div class="grid-item" onclick="openTab('b2');" style="background: #eeeeee;">
+       <small>the heparin bolus is <h1>
+           <span id="bolus"></span> units
+           </h1>
+           <br>
+    the  heparin infusion is
+           <h1>
+               <span id="infusion3"></span> units per hour
+               </h1>
+
+       </small>
+    </div>
+    <!--div class="grid-item" onclick="opentab('b2')" style="background-color: gray">
+        <table id="cardiac-adjustment" class="adjustment-table">
+            <tr>
+                <td>cardiac</td>
+            </tr>
+        </table>
+        <table id="DVT/PE-adjustment" class="adjustment-table">
+            <tr>
+                <td>DVT/PE</td>
+            </tr>
+        </table>
+    </div-->
+    <div class="grid-item" onclick="openTab('b2');" style="background:gainsboro; font-size: smaller;">
+               <table id ='t01' style="width: 100%" >
+                <caption>
+                    infusion adjustment
+                </caption><tr>
+                    <th>aPTT</th>
+                    <th>Bolus (max)</th>
+                    <th>stop infsuin</th>
+                    <th>adjust the rate </th>
+                </tr>
+                <tr>
+                    <td>">40"</td>
+                    <td>60 x kg bolus (500 units)</td>
+                    <td>Dont stop</td>
+                    <td>increase by 3u/kg/hr </td>
+                </tr>
+                <tr>
+                    <td>"40-60"</td>
+                    <td>60 x kg bolus (500 units)</td>
+                    <td>dont stop</td>
+                    <td>increase by 3u/kg/hr </td>
+                </tr>
+                <tr>
+                    <td>>40</td>
+                    <td>no bolus needed </td>
+                    <td>dont stop</td>
+                    <td>increase by 3u/kg/hr </td>
+                </tr>
+                <tr>
+                    <td>>40</td>
+                    <td>no bolus needed </td>
+                    <td>dont stop</td>
+                    <td>increase by 3u/kg/hr </td>
+                </tr>
+            </table>
+        <table id ='t02' style="width: 100%"  class="initailHide">
+            <caption>
+                infusion adjustment for dvt
+            </caption><tr>
+            <th>aPTT</th>
+            <th>Bolus (max)</th>
+            <th>stop infsuin</th>
+            <th>adjust the rate </th>
+        </tr>
+            <tr>
+                <td>">40"</td>
+                <td>60 x kg bolus (500 units)</td>
+                <td>Dont stop</td>
+                <td>increase by 3u/kg/hr </td>
+            </tr>
+            <tr>
+                <td>"40-60"</td>
+                <td>60 x kg bolus (500 units)</td>
+                <td>dont stop</td>
+                <td>increase by 3u/kg/hr </td>
+            </tr>
+            <tr>
+                <td>>40</td>
+                <td>no bolus needed </td>
+                <td>dont stop</td>
+                <td>increase by 3u/kg/hr </td>
+            </tr>
+            <tr>
+                <td>>40</td>
+                <td>no bolus needed </td>
+                <td>dont stop</td>
+                <td>increase by 3u/kg/hr </td>
+            </tr>
+        </table>
+        </div></div>
+    <script src="main2.js">
+    </script>
+
+
+    <div id="results"></div>
+
+</body>
+
+</html>
