@@ -41,6 +41,12 @@
     </style>
 </head>
 <body>
+<div>
+    Welcome to the Heparine calculator
+    <br>
+    Desinged by the BI team at the Portland VA
+
+</div>
 <div class = grid-container>
 
     <div class="grid-item" onclick="openTab('b1');" style="background:grey;">
@@ -50,7 +56,7 @@
                 name="indication2"
                onchange="toggleShowHid(this.value())">
             <option value="0" disabled selected>Select the indication for heparin </option>
-            <option value="Cardiac">cardiac</option>
+            <option value="Cardiac">Cardiac</option>
             <option value="DVT/PE">DVT/PT</option>
             <option value="Stroke/TIA/Surgery">Stroke/TIA</option>
             <option value="Transplant/Vascular">Transplant/Vascular</option>
@@ -58,8 +64,8 @@
         <br>
         <select id="gender2box" name="gender2">
             <option hidden>Sex</option>
-            <option value="male">male</option>
-            <option value="female">female</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
             <br>
 
         </select>
@@ -75,16 +81,30 @@
 
     </div>
     <div class="grid-item" onclick="openTab('b2');" style="background: #eeeeee;">
-       <small>the heparin bolus is <h1>
+       <small>The heparin bolus is
            <span id="bolus"></span> units
-           </h1>
-           <br>
-    the  heparin infusion is
-           <h1>
-               <span id="infusion3"></span> units per hour
-               </h1>
 
+           <br>
+    The  heparin infusion is
+               <span id="infusion3"></span> units per hour
        </small>
+
+        <div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <button onclick="myFunction()">Print this page</button>
+
+            <script>
+                function myFunction() {
+                    window.print();
+                }
+            </script>
+
+        </div>
     </div>
     <!--div class="grid-item" onclick="opentab('b2')" style="background-color: gray">
         <table id="cardiac-adjustment" class="adjustment-table">
@@ -98,7 +118,7 @@
             </tr>
         </table>
     </div-->
-    <div class="grid-item" onclick="openTab('b2');" style="background:gainsboro; font-size: smaller;">
+        <div class="grid-item" onclick="openTab('b2');" style="background:gainsboro; font-size: smaller;">
                <table id ='t01' style="width: 100%" >
                 <caption>
                     infusion adjustment
