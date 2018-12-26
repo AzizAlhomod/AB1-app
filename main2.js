@@ -45,10 +45,11 @@ function GetDose() {
 //correction stuff
 
 
-var cor60 = dosingweight2*60;
-var cor40 = dosingweight2*40;
-var cor30 = dosingweight2*30;
-var cor20 = dosingweight2*20;
+
+var cor40 = roundToFifty(dosingweight2*40);
+var cor30 = roundToFifty(dosingweight2*30);
+var cor20 = roundToFifty(dosingweight2*20);
+var cor60 = roundToFifty(dosingweight2*60);
 
 
 
