@@ -42,6 +42,20 @@ function GetDose() {
     var Goal;
     var finalBolusRound;
 
+//correction stuff
+
+
+var cor60 = dosingweight2*60;
+var cor40 = dosingweight2*40;
+var cor30 = dosingweight2*30;
+var cor20 = dosingweight2*20;
+
+
+
+
+
+
+
 //indication based calculation
 
 
@@ -123,13 +137,23 @@ function GetDose() {
     //results.push(finalbolus2);
     //results.push(finalinfusion2
     // document.getElementById('res2').value = finalinfusion2;
-    var results2 = {indication: protocol2, weight: actualweight2, height: actualheight2, bolus: finalbolus2, infusion: finalinfusion2, goal: Goal};
+    var results2 = { indication: protocol2, weight: actualweight2, height: actualheight2, bolus: finalbolus2, infusion: finalinfusion2, goal: Goal,
+        correction6: cor60, correction4: cor40, correction3 : cor30, correction2: cor20};
 
     //alert(JSON.stringify(results2));
 
     document.getElementById('results').innerHTML = JSON.stringify(results2);
     document.getElementById('bolus').innerHTML = results2.bolus;
     document.getElementById('infusion3').innerHTML = results2.infusion;
+    document.getElementById('correct6').innerHTML = results2.correction6;
+    document.getElementById('correct4').innerHTML = results2.correction4;
+    document.getElementById('correct3').innerHTML = results2.correction3;
+    document.getElementById('correct2').innerHTML = results2.correction2;
+    document.getElementById('correct33').innerHTML = results2.correction3;
+    document.getElementById('correct22').innerHTML = results2.correction2;
+    document.getElementById('correct222').innerHTML = results2.correction2;
+    document.getElementById('indication').innerHTML = results2.indication;
+
 
     //   alert(("Your patient is" + actualweightlb +"lbs" +", "+ gender2 + " who needs to be started on heparin, for a  " + indication2 +  " related issue,given than,"  +"the initial bolus dose is" + (finalbolus2) +"units" + " the initial infusion is" +finalinfusion2 +"units per hour"));
     return false;
