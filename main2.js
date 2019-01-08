@@ -1,4 +1,3 @@
-
 // Input: any integer.
 // Operation: round the result of dividing any integer with 50, and then multiplying it with 50.
 function roundToFifty(someNum){
@@ -43,13 +42,30 @@ function GetDose() {
     var finalBolusRound;
 
 //correction stuff
+    //maximum value for bolus in the adjustment table for DVT is 10000
+dvtboluscormax = 10000;
+boluscor80 = dosingweight2*80;
+boluscor40 = dosingweight2*40;
+ if (boluscor80> dvtboluscormax) {boluscor80a = dvtboluscormax} else {boluscor80a =roundToFifty( boluscor80)}
+ if (boluscor40> dvtboluscormax) {boluscor40a = dvtboluscormax} else {boluscor40a = roundToFifty (boluscor40)}
+
+maxadjust = 500;
+calccor60 = dosingweight2*6;
+calccor40 = dosingweight2*4;
+calccor30 = dosingweight2*3;
+calccor20= dosingweight2*2;
+// making sure its less than 500
+    // rounded up
+
+    if (calccor60 >maxadjust) {cor60 = maxadjust} else {cor60 = roundToFifty(calccor60)}
+    if (calccor40 >maxadjust) {cor40 = maxadjust} else {cor40 = roundToFifty(calccor40)}
+    if (calccor30 >maxadjust) {cor30 = maxadjust} else {cor30 = roundToFifty(calccor30)}
+    if (calccor20 >maxadjust) {cor20 = maxadjust} else {cor20 = roundToFifty(calccor20)}
 
 
 
-var cor40 = roundToFifty(dosingweight2*40);
-var cor30 = roundToFifty(dosingweight2*30);
-var cor20 = roundToFifty(dosingweight2*20);
-var cor60 = roundToFifty(dosingweight2*60);
+
+
 
 
 
@@ -61,7 +77,7 @@ var cor60 = roundToFifty(dosingweight2*60);
 
 
     if (indication2 == "Cardiac") {
-        protocol2 = "cardiac";
+        protocol2 = "Cardiac";
         bolus2 = 60;
         infusion2 = 12;
         maxbolus2 = 5000;
@@ -101,6 +117,7 @@ var cor60 = roundToFifty(dosingweight2*60);
         }
     }
     else if (indication2 == "Stroke/TIA/Surgery") {
+        protocol2 = "Stroke/TIA/Surgery";
         bolus2 = 80;
         infusion2 = 18;
         calculatedbolus2 = bolus2 * dosingweight2;
@@ -115,11 +132,12 @@ var cor60 = roundToFifty(dosingweight2*60);
         }
         if (calculatedinfusion2 > maxinfusion2) {
             finalinfusion2 = maxinfusion2
-        } else {
+        } else {''
             finalinfusion2 = roundToFifty(calculatedinfusion2) // call round function to round to multiples of 50
         }
     }
     else if (indication2 == "Transplant/Vascular") {
+        protocol2 == "Transplant/Vascular"
         finalbolus2 = 0;
         finalinfusion2 = 500
     }
@@ -139,7 +157,7 @@ var cor60 = roundToFifty(dosingweight2*60);
     //results.push(finalinfusion2
     // document.getElementById('res2').value = finalinfusion2;
     var results2 = { indication: protocol2, weight: actualweight2, height: actualheight2, bolus: finalbolus2, infusion: finalinfusion2, goal: Goal,
-        correction6: cor60, correction4: cor40, correction3 : cor30, correction2: cor20};
+        correction6: cor60, correction4: cor40, correction3 : cor30, correction2: cor20, boluscor80 : boluscor80a, boluscor40 : boluscor40a};
 
     //alert(JSON.stringify(results2));
 
@@ -154,6 +172,23 @@ var cor60 = roundToFifty(dosingweight2*60);
     document.getElementById('correct22').innerHTML = results2.correction2;
     document.getElementById('correct222').innerHTML = results2.correction2;
     document.getElementById('indication').innerHTML = results2.indication;
+    document.getElementById('bolus80').innerHTML= results2.boluscor80;
+    document.getElementById('bolus40').innerHTML= results2.boluscor40;
+    //last column in dvt table
+    document.getElementById('dvtrow1').innerHTML = results2.correction4;
+    document.getElementById('dvtrow2').innerHTML = results2.correction2;
+    document.getElementById('dvtrow3').innerHTML = results2.correction2;
+
+    document.getElementById('dvtrow5').innerHTML = results2.correction2;
+    document.getElementById('dvtrow6').innerHTML = results2.correction3;
+//last column in stroke table
+    document.getElementById('strokerow1').innerHTML = results2.correction4;
+    document.getElementById('strokerow2').innerHTML = results2.correction2;
+    document.getElementById('strokerow3').innerHTML = results2.correction2;
+
+    document.getElementById('strokerow5').innerHTML = results2.correction3;
+    document.getElementById('strokerow6').innerHTML = results2.correction4;
+
 
 
     //   alert(("Your patient is" + actualweightlb +"lbs" +", "+ gender2 + " who needs to be started on heparin, for a  " + indication2 +  " related issue,given than,"  +"the initial bolus dose is" + (finalbolus2) +"units" + " the initial infusion is" +finalinfusion2 +"units per hour"));
