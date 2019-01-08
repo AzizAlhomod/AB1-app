@@ -13,7 +13,7 @@
 </div>
 <div class = grid-container >
 
-    <div class="grid-item" onclick="openTab('b1');"  style="background:snow;" align="left">
+    <div class="grid-item"  style="background:snow;" align="left">
         <h5>
         <select
                 id="indication2box"
@@ -55,7 +55,7 @@
         </div>
 
     </div>
-    <div class="grid-item" onclick="openTab('b2');" style="background: #eeeeee;">
+    <div class="grid-item" style="background: #eeeeee;">
        <small>The heparin bolus is
            <span id="bolus"></span> units
 
@@ -67,19 +67,8 @@
 
     </div>
 
-    <!--div class="grid-item" onclick="opentab('b2')" style="background-color: gray">
-        <table id="cardiac-adjustment" class="adjustment-table">
-            <tr>
-                <td>cardiac</td>
-            </tr>
-        </table>
-        <table id="DVT/PE-adjustment" class="adjustment-table">
-            <tr>
-                <td>DVT/PE</td>
-            </tr>
-        </table>
-    </div-->
-        <div class="grid-item" onclick="openTab('b2');" style="background:gainsboro; font-size: smaller;">
+
+        <div class="grid-item" style="background:gainsboro; font-size: smaller;">
 
 
     <br>
@@ -95,126 +84,131 @@
         .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
     </style>
 </div>
+            <div class="cardiac-wrapper" style="display: none">
+                Cardiac adjustment table
+                <table class="tg" id="cardiac_table">
+                    <h1>
+                        Follow this table for heparin infusion adjustment using
+                        <span id="indication"></span> protocol
+                    </h1>
+                    <tr>
+                        <th class="tg-fymr" >PTT</th>
+                        <th class="tg-fymr">Heparin bolus</th>
+                        <th class="tg-fymr">Stop infusion?</th>
+                        <th class="tg-fymr" colspan="2">Infusion adjustment by unit per hour</th>
 
-    <table class="tg" id="cardiac_table">
-        <h1>
-            Follow this table for heparin infusion adjustment using
-            <span id="indication"></span> protocol
-        </h1>
-        <tr>
-            <th class="tg-fymr" >PTT</th>
-            <th class="tg-fymr">Heparin bolus</th>
-            <th class="tg-fymr">Stop infusion?</th>
-            <th class="tg-fymr" colspan="2">Infusion adjustment by unit per hour</th>
+                    </tr>
+                    <tr>
 
-        </tr>
-        <tr>
+                        <td class="tg-0pky">&lt; 40</td>
+                        <td class="tg-0pky" id="correct60"> dosing weight x 60 units </td>
+                        <td class="tg-0pky">No</td>
+                        <td class="tg-0pky">increase infusion rate by</td>
+                        <td class="tg-0pky" id="cardiacRow1">  cardiacRow1 dosing weight x 4  </td>
 
-            <td class="tg-0pky">&lt; 40</td>
-            <td class="tg-0pky" id="correct6"> dosing weight x 60 units </td>
-            <td class="tg-0pky">No</td>
-            <td class="tg-0pky">increase infusion rate by</td>
-            <td class="tg-0pky" id="correct4">dosing weight x 4 </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0pky">&gt; 40&nbsp;&nbsp;&amp; &lt; 67</td>
+                        <td class="tg-0pky" id="correct30"> dosing weight x 30 units </td>
+                        <td class="tg-0pky">No </td>
+                        <td class="tg-0pky">increase infusion rate by</td>
+                        <td class="tg-0pky" id="cardiacRow2"> cardiacRow2 hi dosing weight x 2</td>
 
-        </tr>
-        <tr>
-            <td class="tg-0pky">&gt; 40&nbsp;&nbsp;&amp; &lt; 67</td>
-            <td class="tg-0pky" id="correct3">dosing weight x 30 units</td>
-            <td class="tg-0pky">No </td>
-            <td class="tg-0pky">increase infusion rate by</td>
-            <td class="tg-0pky" id="correct2"> dosing weight x 2</td>
-
-        </tr>
-        <tr>
-            <td class="tg-0pky">&gt; 67 &amp;&nbsp;&nbsp;&lt; 72</td>
-            <td class="tg-0pky">No adjustment </td>
-            <td class="tg-0pky">No</td>
-            <td class="tg-0pky">increase infusion rate by </td>
-            <td class="tg-0pky" id="correct22">dosing weight x 2</td>
-        </tr>
-        <tr>
-            <td class="tg-0pky">&gt; 72 &amp; &lt; 104</td>
-            <td class="tg-0pky">No adjustment</td>
-            <td class="tg-0pky">No</td>
-            <td class="tg-0pky">Goal Achieved</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0pky">&gt; 67 &amp;&nbsp;&nbsp;&lt; 72</td>
+                        <td class="tg-0pky">No adjustment </td>
+                        <td class="tg-0pky">No</td>
+                        <td class="tg-0pky">increase infusion rate by </td>
+                        <td class="tg-0pky" id="cardiacRow3">  cardiacRow3 dosing weight x 2</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0pky">&gt; 72 &amp; &lt; 104</td>
+                        <td class="tg-0pky">No adjustment</td>
+                        <td class="tg-0pky">No</td>
+                        <td class="tg-0pky">Goal Achieved</td>
 
 
-        </tr>
-        <tr>
-            <td class="tg-0pky">&gt;104 &amp; &lt; 150</td>
-            <td class="tg-0pky">No adjustment</td>
-            <td class="tg-0pky">No</td>
-            <td class="tg-0pky">decrease the infusion by </td>
-            <td class="tg-0pky"id="correct222"> dosing weight x 2</td>
-        </tr>
-        <tr>
-            <td class="tg-0pky">&gt; 150</td>
-            <td class="tg-0pky">No adjustment</td>
-            <td class="tg-0pky">for 1 hr</td>
-            <td class="tg-0pky">decrease the infusion by</td>
-            <td class="tg-0pky" id="correct33"> dosing weight x 3</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0pky">&gt;104 &amp; &lt; 150</td>
+                        <td class="tg-0pky">No adjustment</td>
+                        <td class="tg-0pky">No</td>
+                        <td class="tg-0pky">decrease the infusion by </td>
+                        <td class="tg-0pky"id="cardiacRow5"> cardiacRow5  dosing weight x 2</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0pky">&gt; 150</td>
+                        <td class="tg-0pky">No adjustment</td>
+                        <td class="tg-0pky">for 1 hr</td>
+                        <td class="tg-0pky">decrease the infusion by</td>
+                        <td class="tg-0pky" id="infusionX3"> dosing weight x 3</td>
 
-        </tr>
-        <style type="text/css">
-            .tg  {border-collapse:collapse;border-spacing:0;}
-            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-top-width:1px;border-bottom-width:1px;border-color:black;}
-            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-top-width:1px;border-bottom-width:1px;border-color:black;}
-            .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-        </style>
-    </table>
-DVT adjustment table
-            <table class=" tg" id="DVT_table">
-                <tr>
-                    <th>PTT</th>
-                    <th>Heparin bolus (Max 10000)</th>
-                    <th>Stop infusion?</th>
-                    <th colspan="2">Infusion adjustment </th>
-                </tr>
-                <tr>
-                    <td>&lt; 40</td>
-                    <td id="bolus80">80&nbsp;&nbsp;U x DW</td>
-                    <td>No</td>
-                    <td>Increase by </td>
-                    <td id="dvtrow1">increase by 4 x DW</td>
-                </tr>
-                <tr>
-                    <td>&gt; 40&nbsp;&nbsp;&amp; &lt; 67</td>
-                    <td id="bolus40">40 U x DW</td>
-                    <td>No</td>
-                    <td>Increase by</td>
-                    <td id="dvtrow2">increase by 2 x DW</td>
-                </tr>
-                <tr>
-                    <td>&gt; 67 &amp;&nbsp;&nbsp;&lt; 72</td>
-                    <td>None</td>
-                    <td>No</td>
-                    <td>Increase by</td>
-                    <td id="dvtrow3">increase by 2 x DW</td>
-                </tr>
-                <tr>
-                    <td>&gt; 72 &amp; &lt; 104</td>
-                    <td>None</td>
-                    <td>No</td>
-                    <td></td>
-                    <td>Goal Achieved</td>
-                </tr>
-                <tr>
-                    <td>&gt;104 &amp; &lt; 150</td>
-                    <td>None</td>
-                    <td>No</td>
-                    <td>Decrease by</td>
-                    <td id="dvtrow5">decrease by 2 x DW<br></td>
-                </tr>
-                <tr>
-                    <td>&gt; 150</td>
-                    <td>None</td>
-                    <td>for 1 hr</td>
-                    <td>Decrease by</td>
-                    <td id="dvtrow6">decrease by 3 x DW<br></td>
-                </tr>
-            </table>
-            Stroke adjustment table
-            <table class="tg" id ="stroke_table">
+                    </tr>
+                    <style type="text/css">
+                        .tg  {border-collapse:collapse;border-spacing:0;}
+                        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-top-width:1px;border-bottom-width:1px;border-color:black;}
+                        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-top-width:1px;border-bottom-width:1px;border-color:black;}
+                        .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+                    </style>
+                </table>
+            </div>
+            <div class="dvt-wrapper" style="display: none">
+                DVT adjustment table
+                <table class="tg" id="DVT_table">
+                    <tr>
+                        <th>PTT</th>
+                        <th>Heparin bolus (Max 10000)</th>
+                        <th>Stop infusion?</th>
+                        <th colspan="2">Infusion adjustment </th>
+                    </tr>
+                    <tr>
+                        <td>&lt; 40</td>
+                        <td id="correct80">80U x DW</td>
+                        <td>No</td>
+                        <td>Increase by </td>
+                        <td id="dvtRow1">increase by 4 x DW</td>
+                    </tr>
+                    <tr>
+                        <td>&gt; 40&nbsp;&nbsp;&amp; &lt; 67</td>
+                        <td id="correct40">80U x DW</td>
+                        <td>No</td>
+                        <td>Increase by </td>
+                        <td id="dvtRow2">increase by 2 x DW</td>
+                    </tr>
+                    <tr>
+                        <td>&gt; 67 &amp;&nbsp;&nbsp;&lt; 72</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>Increase by</td>
+                        <td id="dvtRow3">increase by 2 x DW</td>
+                    </tr>
+                    <tr>
+                        <td>&gt; 72 &amp; &lt; 104</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td></td>
+                        <td>Goal Achieved</td>
+                    </tr>
+                    <tr>
+                        <td>&gt;104 &amp; &lt; 150</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>Decrease by</td>
+                        <td id="dvtRow5"> dvtROW decrease by 2 x DW<br></td>
+                    </tr>
+                    <tr>
+                        <td>&gt; 150</td>
+                        <td>None</td>
+                        <td>for 1 hr</td>
+                        <td>Decrease by</td>
+                        <td id="dvtRow6">decrease by 3 x DW<br></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="stroke-wrapper" style="display: none">
+                Stroke adjustment table
+                <table class="tg" id ="stroke_table">
                     <tr>
                         <th>PTT</th>
                         <th>Heparin bolus</th>
@@ -227,21 +221,21 @@ DVT adjustment table
                         <td>None</td>
                         <td>No</td>
                         <td>increase by </td>
-                        <td id="strokerow1">increase by 4 x DW</td>
+                        <td id="strokeRow1">increase by 4 x DW</td>
                     </tr>
                     <tr>
                         <td>&gt; 50  &amp; &lt; 69</td>
                         <td>None</td>
                         <td>No</td>
                         <td>increase by</td>
-                        <td id="strokerow2">increase by 2 x DW</td>
+                        <td id="strokeRow2">increase by 2 x DW</td>
                     </tr>
                     <tr>
                         <td>&gt; 69 &amp;  &lt; 90</td>
                         <td>None</td>
                         <td>No</td>
                         <td>increase by</td>
-                        <td id="strokerow3">increase by 2 x DW</td>
+                        <td id="strokeRow3">increase by 2 x DW</td>
                     </tr>
                     <tr>
                         <td>&gt; 90 &amp; &lt; 104</td>
@@ -255,20 +249,23 @@ DVT adjustment table
                         <td>None</td>
                         <td>No</td>
                         <td>Decrease by</td>
-                        <td id="strokerow5">decrease by 3 x DW<br></td>
+                        <td id="strokeRow5">decrease by 3 x DW<br></td>
                     </tr>
                     <tr>
                         <td>&gt; 120</td>
                         <td>None</td>
                         <td>for 1 hr</td>
                         <td>Decrease by</td>
-                        <td id="strokerow6">decrease by 4 x DW<br></td>
+                        <td id="strokeRow6">decrease by 4 x DW<br></td>
                     </tr>
                 </table>
-            <table class="tg" id = procedure_table">
-               vascular / transplant  no need for adjustment in case for this indication
-            </table>
-
+            </div>
+            <div class="procedure-wrapper" style="display: none">
+                Procedure adjustment table
+                <table class="tg" id = procedure_table">
+                    vascular / transplant  no need for adjustment in case for this indication
+                </table>
+            </div>
 
 </div>
 
